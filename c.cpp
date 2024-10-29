@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-//Beginning of main function
+
 int main() {
     DoublyLinkedList dll;
 
@@ -12,7 +12,7 @@ int main() {
     dll.traverseForward();  // Output: 10 15 20
 
     cout << "Backward traversal: ";
-    dll.traverseBackward(); // Output: 20 15 10
+    dll.traverseBackward(); //
     dll.deleteFromBeginning();
     dll.traverseForward();  // Output: 15 20
 
