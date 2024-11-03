@@ -27,22 +27,6 @@ int main() {
     return 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Insert at the beginning
     void insertAtBeginning(int value) {
         Node* newNode = new Node(value);
@@ -89,4 +73,65 @@ int main() {
             current->next->prev = newNode;
         }
         current->next = newNode;
+
+    }
+
+    // Delete from the beginning
+    void deleteFromBeginning() {
+        if (head == nullptr) {
+            cout << "List is empty\n";
+            return;
+        }
+        Node* temp = head;
+        head = head->next;
+        if (head != nullptr) {
+            head->prev = nullptr;
+        }
+        delete temp;
+    }
+
+    // Delete from the end
+    void deleteFromEnd() {
+        if (head == nullptr) {
+            cout << "List is empty\n";
+            return;
+        }
+        if (head->next == nullptr) {
+            delete head;
+            head = nullptr;
+            return;
+        }
+        Node* last = head;
+        while (last->next != nullptr) {
+            last = last->next;
+        }
+        last->prev->next = nullptr;
+        delete last;
+    }
+
+    // Delete from a specific position
+    void deleteFromPosition(int position) {
+        if (head == nullptr) {
+            cout << "List is empty\n";
+            return;
+        }
+        if (position == 0) {
+            deleteFromBeginning();
+            return;
+        }
+        Node* current = head;
+        for (int i = 0; i < position && current != nullptr; ++i) {
+            current = current->next;
+        }
+        if (current == nullptr) {
+            cout << "Position out of bounds\n";
+            return;
+        }
+        if (current->next != nullptr) {
+            current->next->prev = current->prev;
+        }
+        if (current->prev != nullptr) {
+            current->prev->next = current->next;
+        }
+        delete current;
     }
