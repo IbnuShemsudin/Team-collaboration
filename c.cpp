@@ -134,4 +134,18 @@ int main() {
             current->prev->next = current->next;
         }
         delete current;
+
+    }
+    // Traverse the list backward
+    void traverseBackward() const {
+        if (head == nullptr) return;
+        Node* last = head;
+        while (last->next != nullptr) {
+            last = last->next;
+        }
+        while (last != nullptr) {
+            cout << last->data << " ";
+            last = last->prev;
+        }
+        cout << endl;
     }
