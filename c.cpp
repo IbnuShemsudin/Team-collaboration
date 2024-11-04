@@ -1,6 +1,24 @@
 #include <iostream>
 using namespace std;
 
+class Node {
+public:
+    int data;
+    Node* next;
+    Node* prev;
+
+    Node(int value) : data(value), next(nullptr), prev(nullptr) {}
+};
+
+class DoublyLinkedList {
+private:
+    Node* head;
+
+public:
+    DoublyLinkedList() : head(nullptr) {}
+
+
+
 int main() {
     DoublyLinkedList dll;
 
