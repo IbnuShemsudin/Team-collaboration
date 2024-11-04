@@ -18,7 +18,16 @@ public:
     DoublyLinkedList() : head(nullptr) {}
 
 
-
+// Traverse the list forward
+    void traverseForward() const {
+        Node* current = head;
+        while (current != nullptr) {
+            cout << current->data << " ";
+            current = current->next;
+        }
+        cout << endl;
+    }
+    
 int main() {
     DoublyLinkedList dll;
 
