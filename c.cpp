@@ -17,44 +17,7 @@ private:
 public:
     DoublyLinkedList() : head(nullptr) {}
 
-
-// Traverse the list forward
-    void traverseForward() const {
-        Node* current = head;
-        while (current != nullptr) {
-            cout << current->data << " ";
-            current = current->next;
-        }
-        cout << endl;
-    }
-    
-int main() {
-    DoublyLinkedList dll;
-
-    dll.insertAtBeginning(10);
-    dll.insertAtEnd(20);
-    dll.insertAtPosition(15, 1);
-
-    cout << "Forward traversal: ";
-    dll.traverseForward();  // Output: 10 15 20
-
-    cout << "Backward traversal: ";
-    dll.traverseBackward(); //
-    dll.deleteFromBeginning();
-    dll.traverseForward();  // Output: 15 20
-
-    dll.deleteFromEnd();
-    dll.traverseForward();  // Output: 15
-
-    dll.insertAtEnd(25);
-    dll.insertAtEnd(30);
-    dll.deleteFromPosition(1);
-    dll.traverseForward();  // Output: 15 30
-
-    return 0;
-}
-
-// Insert at the beginning
+    // Insert at the beginning
     void insertAtBeginning(int value) {
         Node* newNode = new Node(value);
         if (head != nullptr) {
@@ -100,7 +63,6 @@ int main() {
             current->next->prev = newNode;
         }
         current->next = newNode;
-
     }
 
     // Delete from the beginning
@@ -161,8 +123,18 @@ int main() {
             current->prev->next = current->next;
         }
         delete current;
-
     }
+
+    // Traverse the list forward
+    void traverseForward() const {
+        Node* current = head;
+        while (current != nullptr) {
+            cout << current->data << " ";
+            current = current->next;
+        }
+        cout << endl;
+    }
+
     // Traverse the list backward
     void traverseBackward() const {
         if (head == nullptr) return;
@@ -176,3 +148,32 @@ int main() {
         }
         cout << endl;
     }
+};
+
+int main() {
+    DoublyLinkedList dll;
+
+    dll.insertAtBeginning(10);
+    dll.insertAtEnd(20);
+    dll.insertAtPosition(15, 1);
+
+    cout << "Forward traversal: ";
+    dll.traverseForward();  // Output: 10 15 20
+
+    cout << "Backward traversal: ";
+    dll.traverseBackward(); // Output: 20 15 10
+    dll.deleteFromBeginning();
+    dll.traverseForward();  // Output: 15 20
+
+    dll.deleteFromEnd();
+    dll.traverseForward();  // Output: 15
+
+    dll.insertAtEnd(25);
+    dll.insertAtEnd(30);
+    dll.deleteFromPosition(1);
+    dll.traverseForward();  // Output: 15 30
+
+    return 0;
+}
+
+
